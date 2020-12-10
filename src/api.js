@@ -27,14 +27,16 @@ const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 // POPULAR GAMES
-const popular_games = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
 /* This controls:
 - the timeframe in which we're searching (lastYear to currentDate) - games?dates=${lastYear},${currentDate}
 - the ordering (highest to lowest rating) - &ordering=-rating
 - the amount of results returned - page_size=10
 Often, endpoints will be input like this, so it's best to predefine variables to allow for dynamic content changes
 */
+const popular_games = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
+const upcoming_games = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
+const newGames = `games?dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
 
-const popularGamesUrl = () => `${base_url}${popular_games}`;
-
-console.log(popularGamesUrl());
+export const popularGamesUrl = () => `${base_url}${popular_games}`;
+export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
+export const newGamesURL = () => `${base_url}${newGames}`;
