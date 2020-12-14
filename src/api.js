@@ -26,7 +26,7 @@ const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
-// POPULAR GAMES
+// HOME GAMESLIST
 /* This controls:
 - the timeframe in which we're searching (lastYear to currentDate) - games?dates=${lastYear},${currentDate}
 - the ordering (highest to lowest rating) - &ordering=-rating
@@ -40,3 +40,12 @@ const newGames = `games?dates=${lastYear},${currentDate}&ordering=-released&page
 export const popularGamesUrl = () => `${base_url}${popular_games}`;
 export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
 export const newGamesURL = () => `${base_url}${newGames}`;
+
+// GAMES DETAILS
+/* This url will be passed into the axios request for game specific detail in the detailAction. */
+export const gamesDetailsURL = (gameID) => `${base_url}games/${gameID}`;
+
+// GAME SCREENSHOTS URL
+/* This url will be passed into the axios request for game specific detail in the detailAction. */
+export const gameScreenshotURL = (gameID) =>
+  `${base_url}games/${gameID}/screenshots`;

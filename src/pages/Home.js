@@ -23,9 +23,36 @@ const Home = () => {
 
   return (
     <GameList>
+      {/* UPCOMING GAMES */}
       <h2>Upcoming Games</h2>
       <Games>
         {upComingGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+            id={game.id}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      {/* POPULAR GAMES */}
+      <h2>Popular Games</h2>
+      <Games>
+        {popular.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            image={game.background_image}
+            id={game.id}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      {/* NEW GAMES */}
+      <h2>New Games</h2>
+      <Games>
+        {newGames.map((game) => (
           <Game
             name={game.name}
             released={game.released}

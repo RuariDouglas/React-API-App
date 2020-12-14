@@ -1,11 +1,19 @@
 import React from "react";
 // STYLES
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+// ACTIONS
+import { loadDetail } from "../Actions/detailAction";
 
-const Game = ({ name, released, image }) => {
+const Game = ({ name, released, image, id }) => {
+  // Here we call on our specific game detail when someone clicks on the game, this fires up our API request.
+  const dispatch = useDispatch();
+  const loadDetailHandler = () => {
+    dispatch(loadDetail(id));
+  };
   return (
-    <StyledGame>
+    <StyledGame onClick={loadDetailHandler}>
       <h3>{name}</h3>
       <p>{released}</p>
       <img src={image} alt={name} />
