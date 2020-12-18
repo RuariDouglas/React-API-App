@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body {
         font-family: 'montserrat', sans-serif;
-        width: 100%auto;
+        width: 100%;
     }
     h2 {
         font-size: 3rem;
@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
     h3 {
         font-size: 1.3rem;
         color: ${col.grey};
-        padding: 1.5rem;
+        padding: 1.5rem 0;
     }
     p {
         font-size: 1.2rem;

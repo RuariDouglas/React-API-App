@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 // ACTIONS
 import { loadDetail } from "../Actions/detailAction";
+import { Link } from "react-router-dom";
 
 const Game = ({ name, released, image, id }) => {
   // Here we call on our specific game detail when someone clicks on the game, this fires up our API request.
@@ -13,11 +14,13 @@ const Game = ({ name, released, image, id }) => {
     dispatch(loadDetail(id));
   };
   return (
-    <StyledGame onClick={loadDetailHandler}>
-      <h3>{name}</h3>
-      <p>{released}</p>
-      <img src={image} alt={name} />
-    </StyledGame>
+    <Link to={`/game/${id}`}>
+      <StyledGame onClick={loadDetailHandler}>
+        <h3>{name}</h3>
+        <p>{released}</p>
+        <img src={image} alt={name} />
+      </StyledGame>
+    </Link>
   );
 };
 

@@ -9,8 +9,13 @@ import GameDetail from "../components/GameDetail";
 // STYLES
 import styled from "styled-components";
 import { motion } from "framer-motion";
+// GET PAGE LOCATION
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
+  // Here we are getting the ID of the
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
   // FETCH GAMES DATA //
   /* Here we are using useEffect to dispatch our API request upon app mounting. We pass in loadGames which is our API Action Creator. When the loadGames function has attained the API data, it is then dispatched where the gamesReducer checks for a match ("FETCH_GAMES") in the Switch Tree and modifies the state to reflect. */
   const dispatch = useDispatch();
@@ -24,8 +29,7 @@ const Home = () => {
 
   return (
     <GameList>
-
-<GameDetail />
+      {pathId && <GameDetail />}
       {/* UPCOMING GAMES */}
       <h2>Upcoming Games</h2>
       <Games>

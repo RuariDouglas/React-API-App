@@ -6,6 +6,7 @@ import { gamesDetailsURL, gameScreenshotURL } from "../api";
 export const loadDetail = (id) => async (dispatch) => {
   const detailData = await axios.get(gamesDetailsURL(id));
   const screenshotData = await axios.get(gameScreenshotURL(id));
+  dispatch({ type: "LOADING_DETAIL" });
   // Using the action creator, we are able to pass in, via payload, the returned data from our API request
   dispatch({
     type: "GET_DETAIL",
