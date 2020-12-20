@@ -43,6 +43,9 @@ const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: ${col.darkGrey};
     }
+    img {
+        display: block;
+    }
 `;
 
 export default GlobalStyles;
