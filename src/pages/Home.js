@@ -23,7 +23,7 @@ const Home = () => {
     dispatch(loadGames());
   }, [dispatch]); // We have to pass dispatch in to tell useEffect only to run when the dispatch happens.
   // EXTRACT DATA
-  const { popular, newGames, upComingGames } = useSelector(
+  const { popular, newGames, upComingGames, searched } = useSelector(
     (state) => state.games
   );
 
@@ -34,6 +34,25 @@ const Home = () => {
         <AnimatePresence>
           {pathId && <GameDetail pathId={pathId} />}
         </AnimatePresence>
+        {/* SEARCHED GAMES */}
+        {searched.length ? (
+          <div className="searchedGames">
+            <Games>
+              {searched.map((game) => (
+                <Game
+                  name={game.name}
+                  released={game.released}
+                  image={game.background_image}
+                  id={game.id}
+                  key={game.id}
+                />
+              ))}
+            </Games>
+          </div>
+        ) : (
+          ""
+        )}
+
         {/* UPCOMING GAMES */}
         <h2>Upcoming Games</h2>
         <Games>

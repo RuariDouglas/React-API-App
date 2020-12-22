@@ -49,3 +49,7 @@ export const gamesDetailsURL = (gameID) => `${base_url}games/${gameID}`;
 /* This url will be passed into the axios request for game specific detail in the detailAction. */
 export const gameScreenshotURL = (gameID) =>
   `${base_url}games/${gameID}/screenshots`;
+
+// SEARCHED GAME
+export const searchGameURL = (game_name) =>
+  `${base_url}games?search=${game_name}&page_size=9`;
