@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { smallImage } from "../util";
 
 const Game = ({ name, released, image, id }) => {
+  // We need to convert the id to string in order for our IDs to match for the Framer Motion animation
+  const stringPathId = id.toString();
   // Load Details - Here we call on our specific game detail when someone clicks on the game, this fires up our API request.
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
@@ -18,10 +20,15 @@ const Game = ({ name, released, image, id }) => {
   };
   return (
     <Link to={`/game/${id}`}>
-      <StyledGame onClick={loadDetailHandler}>
-        <h3>{name}</h3>
+      {/* Here we need to add corresponding IDs to the elements we wish to animate between. Because we already have  */}
+      <StyledGame layoutId={stringPathId} onClick={loadDetailHandler}>
+        <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
         <p>{released}</p>
-        <img src={smallImage(image, 640)} alt={name} />
+        <motion.img
+          layoutId={`image ${stringPathId}`}
+          src={smallImage(image, 640)}
+          alt={name}
+        />
       </StyledGame>
     </Link>
   );

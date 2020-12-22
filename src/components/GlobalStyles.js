@@ -46,6 +46,11 @@ const GlobalStyles = createGlobalStyle`
     img {
         display: block;
     }
+    input {
+        font-weight: bold;
+        outline: none;
+         font-family: "Montserrat", sans-serif;
+    }
 `;
 
 export default GlobalStyles;

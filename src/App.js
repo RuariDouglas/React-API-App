@@ -5,11 +5,14 @@ import Home from "./pages/Home";
 import GlobalStyles from "./components/GlobalStyles";
 // ROUTER
 import { Route } from "react-router-dom";
+// COMPONENTS
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyles />
+      <Nav />
       {/* This is how we reder the same component for multiple routes. We create an array inside curly braces and pass in each route seperated by a comma  */}
       <Route Path={["/game/:id", "/"]}>
         <Home />
