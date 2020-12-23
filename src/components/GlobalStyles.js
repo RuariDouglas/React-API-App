@@ -1,4 +1,3 @@
-import { createStore } from "redux";
 import { createGlobalStyle } from "styled-components";
 import { col } from "../Styles/variables";
 
@@ -13,35 +12,39 @@ const GlobalStyles = createGlobalStyle`
             width: .5rem;
         }
         &::-webkit-scrollbar-thumb {
-            background-color: darkred;
+            background-color: ${col.primary};
         }
         &::-webkit-scrollbar-track {
             background-color: transparent;
         }
     }
     body {
-        font-family: 'montserrat', sans-serif;
+        font-family: 'Ubuntu Mono', monospace;
         width: 100%;
+        background-color: ${col.dark}
+    }
+    h1 {
+        font-family: 'Press Start 2P', cursive;
     }
     h2 {
         font-size: 3rem;
-        font-family: 'Abril Fatface', cursive;
+        font-family: 'Press Start 2P', cursive;
         font-weight: lighter;
-        color: ${col.darkGrey};
+        color: ${col.light};
     }
     h3 {
-        font-size: 1.3rem;
-        color: ${col.grey};
-        padding: 1.5rem 0;
+        font-size: 1.8rem;
+        padding: 1rem 0;
+        color: ${col.light};
     }
     p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         line-height: 200%;
-        color: ${col.darkGrey}
+        color: ${col.dark}
     }
     a{
         text-decoration: none;
-        color: ${col.darkGrey};
+        color: ${col.accent};
     }
     img {
         display: block;
@@ -49,7 +52,7 @@ const GlobalStyles = createGlobalStyle`
     input {
         font-weight: bold;
         outline: none;
-         font-family: "Montserrat", sans-serif;
+        font-family: 'Ubuntu Mono', monospace;
     }
 `;
 

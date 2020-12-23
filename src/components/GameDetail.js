@@ -2,6 +2,7 @@ import React from "react";
 // STYLING & ANIMATION
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { col } from "../Styles/variables";
 // REDUX
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -15,8 +16,7 @@ import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
 // Star images
-import starEmpty from "../img/star-empty.png";
-import starFull from "../img/star-full.png";
+import ReactStars from "react-rating-stars-component";
 
 const GameDetail = ({ pathId }) => {
   const history = useHistory();
@@ -28,20 +28,6 @@ const GameDetail = ({ pathId }) => {
       document.body.style.overflow = "auto";
       history.push("/");
     }
-  };
-
-  // GET STARS
-  const getStars = () => {
-    const stars = [];
-    const rating = Math.floor(game.rating);
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        stars.push(<img alt="star" key={i} src={starFull}></img>);
-      } else {
-        stars.push(<img alt="star" key={i} src={starEmpty}></img>);
-      }
-    }
-    return stars;
   };
 
   // GET PLATFORM IMAGES
@@ -67,15 +53,23 @@ const GameDetail = ({ pathId }) => {
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
           <Detail layoutId={pathId}>
+            <motion.h3 className="name">{game.name}</motion.h3>
             <Stats>
               {/* RATING */}
               <div className="rating">
-                <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
-                <p>Rating: {game.rating}</p>
-                {getStars(game.rating)}
+                <h3>Rating: {game.rating}</h3>
+                <ReactStars
+                  value={game.rating}
+                  isHalf={true}
+                  count={5}
+                  color={"#e28800"}
+                  activeColor={"blue"}
+                  edit={false}
+                  size={40}
+                />
               </div>
               {/* INFO */}
-              <Info>
+              <div className="info">
                 <h3>Platforms</h3>
                 <Platforms>
                   {game.platforms.map((data) => (
@@ -87,14 +81,14 @@ const GameDetail = ({ pathId }) => {
                     ></img>
                   ))}
                 </Platforms>
-              </Info>
+              </div>
             </Stats>
             {/* Media */}
             <Media>
               <motion.img
-                layoutId={`image ${pathId}`}
                 src={smallImage(game.background_image, 1280)}
                 alt={game.background_image}
+                layoutId={`image ${pathId}`}
               />
             </Media>
             <Description>
@@ -131,7 +125,7 @@ const CardShadow = styled(motion.div)`
     width: 0.5rem;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: darkRed;
+    background-color: ${col.primary};
   }
   &::-webkit-scrollbar-track {
     background-color: transparent;
@@ -139,13 +133,21 @@ const CardShadow = styled(motion.div)`
 `;
 
 const Detail = styled(motion.div)`
+  margin-top: 2rem;
   width: 80%;
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   padding: 2rem 5rem;
-  background: white;
+  background: ${col.primary};
   position: absolute;
   left: 10%;
   color: black;
+  h3 {
+    color: ${col.dark};
+    &.name {
+      text-align: center;
+      font-size: 3rem;
+    }
+  }
   img {
     width: 100%;
   }
@@ -153,25 +155,27 @@ const Detail = styled(motion.div)`
 
 const Stats = styled(motion.div)`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  img {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: inline;
+  .rating {
+    width: 30%;
+    h3 {
+      padding-bottom: 0;
+    }
   }
-`;
-
-const Info = styled(motion.div)`
-  text-align: center;
+  .info {
+    width: 16rem;
+    img {
+      width: 2rem;
+      height: 2rem;
+      display: inline;
+    }
+  }
 `;
 
 const Platforms = styled(motion.div)`
   display: flex;
-  justify-content: space-evenly;
-  img {
-    margin-left: 3rem;
-  }
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const Media = styled(motion.div)`

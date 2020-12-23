@@ -1,5 +1,8 @@
 export const col = {
-  grey: "#696969",
-  darkGrey: "#333",
-  salm: "#ff7676",
+  dark: "#161616",
+  primary: "#FF9800",
+  accent: "#FFC107",
+  light: "#fdf3e9",
+  textLight: "#757575",
+  blue: "blue",
 };

@@ -6,9 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 // COMPONENTS
 import Game from "../components/GameCard";
 import GameDetail from "../components/GameDetail";
-// STYLES
+// STYLES & ANIMATIONS
 import styled from "styled-components";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { col } from "../Styles/variables";
 // GET PAGE LOCATION
 import { useLocation } from "react-router-dom";
 
@@ -101,6 +102,7 @@ const GameList = styled(motion.div)`
   padding: 0 5rem;
   h2 {
     padding: 5rem 0%;
+    color: ${col.white};
   }
 `;
 
