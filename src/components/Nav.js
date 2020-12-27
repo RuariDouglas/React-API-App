@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // ANIMATION & STYLING
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import logo from "../img/logo.svg";
 import { col } from "../Styles/variables";
 import { fadeIn } from "../animations";
 // REDUX AND ROUTES
@@ -28,7 +27,6 @@ const Nav = () => {
   return (
     <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo onClick={clearSearched}>
-        <img src={logo} alt="logo" />
         <h1>GAMEAGE</h1>
       </Logo>
       <Search>
@@ -43,25 +41,16 @@ const Nav = () => {
 
 const StyledNav = styled(motion.nav)`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  img {
-    display: inline;
-  }
+  flex-wrap: wrap;
+
   padding: 3rem 5rem;
   text-align: center;
 `;
 const Logo = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 2rem;
   cursor: pointer;
-  img {
-    height: 4rem;
-    width: 4rem;
-    margin-right: 0.2rem;
-  }
+  margin-bottom: 1rem;
   h1 {
     font-size: 4rem;
     color: ${col.primary};
@@ -69,6 +58,11 @@ const Logo = styled(motion.div)`
 `;
 
 const Search = styled(motion.form)`
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   input {
     width: 40rem;
     padding: 1rem;
